@@ -33,8 +33,8 @@ const LandingPage = ({ onLogin }) => {
             {/* Landing Page Content */}
             {!showLogin && (
                 <div style={styles.heroSection}>
-                    <h1>Welcome to Our App</h1>
-                    <p>Your gateway to the best virtual experience. Sign in to access exclusive features.</p>
+                    <h1>Welcome to the Dashboard </h1>
+                    <p>Sign in to access your profile and report.</p>
                     <button style={styles.heroButton} onClick={() => setShowLogin(true)}>
                         Login
                     </button>
