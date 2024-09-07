@@ -1,0 +1,25 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci --legacy-peer-deps --cache .npm --prefer-offline
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install typescript@4.9.5 --legacy-peer-deps
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - index.html  # Include specific files
+      - static/js/**  # Include all files in this directory
+      - static/css/**  # Include all CSS files
+      - '**/*.js'  # Include all JS files (optional if needed)
+  cache:
+    paths:
+      - .npm/**/*
