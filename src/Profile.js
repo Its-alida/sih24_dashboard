@@ -137,7 +137,7 @@ const styles = {
         width: '800px',
         textAlign: 'center',
         marginTop: '20px', // Ensure card is below navbar
-        marginLeft: '350px',
+        marginLeft: '50px',
     },
     profilePicture: {
         width: '150px',

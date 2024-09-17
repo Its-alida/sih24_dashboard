@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = ({ onLogout }) => {
     const therapyChartRef = useRef(null);
-    const emotionChartRef = useRef(null);
     const interactionChartRef = useRef(null);
     const emotionOverTimeChartRef = useRef(null);
-    const interactionDurationChartRef = useRef(null);
     const successFailureChartRef = useRef(null);
     const gestureRecognitionChartRef = useRef(null);
 
@@ -25,26 +23,6 @@ const Dashboard = ({ onLogout }) => {
                         borderColor: 'rgba(75,192,192,1)',
                         borderWidth: 1,
                         data: [12, 19, 3, 5, 2, 3, 8]  // Example data for therapy sessions
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-
-        // Emotion Distribution Chart (Pie)
-        const emotionCtx = document.getElementById('emotionChart').getContext('2d');
-        emotionChartRef.current = new Chart(emotionCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Happy', 'Sad', 'Angry', 'Neutral'],
-                datasets: [
-                    {
-                        label: 'Emotion Distribution',
-                        data: [40, 10, 20, 30],  // Example emotion distribution
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
                     }
                 ]
             },
@@ -114,32 +92,32 @@ const Dashboard = ({ onLogout }) => {
             }
         });
 
-        // Interaction Duration by Scene (Bar)
-        const interactionDurationCtx = document.getElementById('interactionDurationChart').getContext('2d');
-        interactionDurationChartRef.current = new Chart(interactionDurationCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Classroom', 'Restaurant', 'Garden'],
-                datasets: [
-                    {
-                        label: 'Interaction Duration (minutes)',
-                        backgroundColor: 'rgba(75,192,192,0.4)',
-                        borderColor: 'rgba(75,192,192,1)',
-                        borderWidth: 1,
-                        data: [15, 10, 25]  // Example interaction duration data
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                    }
-                }
-            }
-        });
+        // // Interaction Duration by Scene (Bar)
+        // const interactionDurationCtx = document.getElementById('interactionDurationChart').getContext('2d');
+        // interactionDurationChartRef.current = new Chart(interactionDurationCtx, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['Classroom', 'Restaurant', 'Garden'],
+        //         datasets: [
+        //             {
+        //                 label: 'Interaction Duration (minutes)',
+        //                 backgroundColor: 'rgba(75,192,192,0.4)',
+        //                 borderColor: 'rgba(75,192,192,1)',
+        //                 borderWidth: 1,
+        //                 data: [15, 10, 25]  // Example interaction duration data
+        //             }
+        //         ]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         maintainAspectRatio: false,
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //             }
+        //         }
+        //     }
+        // });
 
         // Successful Interactions vs Failed Attempts (Doughnut)
         const successFailureCtx = document.getElementById('successFailureChart').getContext('2d');
@@ -182,10 +160,8 @@ const Dashboard = ({ onLogout }) => {
         // Cleanup function to destroy the charts when the component unmounts
         return () => {
             therapyChartRef.current?.destroy();
-            emotionChartRef.current?.destroy();
             interactionChartRef.current?.destroy();
             emotionOverTimeChartRef.current?.destroy();
-            interactionDurationChartRef.current?.destroy();
             successFailureChartRef.current?.destroy();
             gestureRecognitionChartRef.current?.destroy();
         };
@@ -213,7 +189,7 @@ const Dashboard = ({ onLogout }) => {
                 {/* Sidebar Profile Section */}
                 <aside style={styles.sidebar}>
                     <img
-                        src="https://c8.alamy.com/comp/E842KJ/south-indian-child-welcome-E842KJ.jpg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8JEYPY2qj7-KZFyMd6vUwvlzHjo3aooALSw&s"
                         alt="Profile"
                         style={styles.profilePicture}
                     />
@@ -231,20 +207,12 @@ const Dashboard = ({ onLogout }) => {
                         <canvas id="therapyChart" style={styles.chartCanvas} />
                     </div>
                     <div style={styles.chartCard}>
-                        <h3>Emotion Distribution</h3>
-                        <canvas id="emotionChart" style={styles.chartCanvas} />
-                    </div>
-                    <div style={styles.chartCard}>
                         <h3>Interactions per Session</h3>
                         <canvas id="interactionChart" style={styles.chartCanvas} />
                     </div>
                     <div style={styles.chartCard}>
                         <h3>Emotion Detection Over Time</h3>
                         <canvas id="emotionOverTimeChart" style={styles.chartCanvas} />
-                    </div>
-                    <div style={styles.chartCard}>
-                        <h3>Interaction Duration by Scene</h3>
-                        <canvas id="interactionDurationChart" style={styles.chartCanvas} />
                     </div>
                     <div style={styles.chartCard}>
                         <h3>Success vs Failure in Interactions</h3>
@@ -314,7 +282,7 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
-        padding: '20px',
+        // padding: '20px',
         width: '80%',
         backgroundColor: '#fff',
     },
